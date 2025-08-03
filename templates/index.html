@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Diphylleia&display=swap">
+		<link href="https://fonts.googleapis.com/css2?family=Fontdiner+Swanky&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+        <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+        <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}"/>
+        <title>{{ service_name }}</title>
+    </head>
+    <body class="bg-yellow-400">
+        <!-- 헤더 -->
+		{% if is_logged_in %}
+        {# 로그인 한 경우에만 보이는 내용입니다. #}
+        <header>
+            <div class="container text-center mx-auto p-8">
+                <div class="text-6xl text-black fontdiner-swanky">
+                    {{ service_name }}
+                </div>
+                
+            </div>
+        </header>
+		
+		<div class="grid grid-cols-3 gap-8 max-w-4xl mx-auto">
+		{% if is_done_today %}
+		{# 오늘의 쿠키를 이미 뽑은 경우에만 보이는 내용입니다. #}
+			<div class="col-span-3 bg-white rounded-2xl shadow-2xl p-6">
+				<div class="space-y-3 text-center">
+					<h2 class="text-2xl font-bold">🍀 오늘의 메시지 🍀</h2>
+					<p class="text-black text-lg font-bold diphylleia">{{ my_message.split('.')[0] + '. ' + my_message.split('.')[1] + '.'}}</p>
+					<p class="text-black text-lg font-bold diphylleia">{{ my_message.split('.')[2] + '.' }}</p>
+				</div>
+			</div>
+		{% else %}
+		{# 오늘의 쿠키를 뽑지 않은 경우에 보이는 내용입니다. #}
+			<div class="col-span-3 flex justify-center">
+				<img class="size-[180px] cursor-pointer transition duration-200 hover:scale-120" id="fcButton" src="{{ url_for('static', filename='cookie1.png') }}">
+			</div>
+		{% endif %}
+			<div class="bg-white rounded-2xl shadow-2xl p-6">
+				<div class="text-center">
+					<h2 class="text-2xl font-bold">📈 나의 운세추이 📈</h2>
+                    <div class="p-4">
+						<canvas id="myChart" class="h-[240px]"></canvas>
+					</div>
+                </div>
+			</div>
+			<div class="bg-white rounded-2xl shadow-2xl p-6">
+				<div class="text-center">
+					<h2 class="text-2xl font-bold">💯 오늘의 점수 💯</h2>
+					<div class="h-[240px] flex justify-center items-center">
+						{% if is_done_today %}
+						<span class="text-8xl font-bold text-red-400">{{ last_score }}</span>
+						{% else %}
+						<span class="text-8xl font-bold text-red-400 blur-lg">{{ last_score }}</span>
+						{% endif %}
+					</div>
+				</div>
+			</div>
+			<div class="bg-white rounded-2xl shadow-2xl p-6">
+						<div class="text-center">
+							<h2 class="text-2xl font-bold">🏆 오늘의 랭킹 🏆</h2>
+                            <div class="container max-w-lg mx-0 p-2">
+                                <div class="flex flex-col space-y-2">
+                                    <div class="bg-white rounded-lg shadow-md p-4 flex justify-between transition duration-200 hover:scale-110">
+									{% if rank_1st == my_name %}
+                                        <div><span class="text-xl font-bold mb-2">1위 </span><span class="text-gray-700 font-semibold">{{ rank_1st }} 님</span></div>
+									{% else %}
+										<div><span class="text-xl font-bold mb-2">1위 </span><span class="text-gray-700">{{ rank_1st[0] + '**' }} 님</span></div>
+									{% endif %}
+                                        <div><span class="text-xl text-red-400 font-bold mb-2">{{ point_1st }} 점</span></div>
+                                    </div>
+                                    <div class="bg-white rounded-lg shadow-md p-4 flex justify-between transition duration-200 hover:scale-110">
+									{% if rank_2nd == my_name %}
+                                        <div><span class="text-xl font-bold mb-2">2위 </span><span class="text-gray-700 font-semibold">{{ rank_2nd }} 님</span></div>
+									{% else %}
+										<div><span class="text-xl font-bold mb-2">2위 </span><span class="text-gray-700">{{ rank_2nd[0] + '**' }} 님</span></div>
+									{% endif %}
+                                        <div><span class="text-xl text-red-400 font-bold mb-2">{{ point_2nd }} 점</span></div>
+                                    </div>
+                                    <div class="bg-white rounded-lg shadow-md p-4 flex justify-between transition duration-200 hover:scale-110">
+									{% if rank_3rd == my_name %}
+                                        <div><span class="text-xl font-bold mb-2">3위 </span><span class="text-gray-700 font-semibold">{{ rank_3rd }} 님</span></div>
+									{% else %}
+										<div><span class="text-xl font-bold mb-2">3위 </span><span class="text-gray-700">{{ rank_3rd[0] + '**' }} 님</span></div>
+									{% endif %}
+                                        <div><span class="text-xl text-red-400 font-bold mb-2">{{ point_3rd }} 점</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="space-y-2 text-center">
+                            <h3 class="text-xl font-bold">🤔나의 운세 랭킹은?</h3>
+                            <span class="text-xl text-red-400 font-bold mb-2">상위 {{ my_rank }}%</span>
+                        </div>
+			</div>
+			<div class="col-span-3 flex justify-center">
+				<button class="bg-black transition duration-200 text-yellow-400 hover:scale-110 font-bold py-2 px-4 rounded-2xl cursor-pointer" onclick="logout()">로그아웃</button>
+			</div>
+		</div>
+		
+		
+		{% else %}
+		{# 로그인하지 않은 경우에 보이는 내용입니다. #}
+		<div class="flex items-center justify-center bg-yellow-400 h-screen">
+			<div class="grid text-center gap-12">
+				<div class="">
+					<p class="text-8xl font-bold fontdiner-swanky mb-5"> {{ service_name.split(' ')[0] }} </p>
+					<p class="text-8xl font-bold fontdiner-swanky ml-10"> {{ service_name.split(' ')[1] }} </p>
+					<p class="text-8xl font-bold fontdiner-swanky"> {{ service_name.split(' ')[2] }} </p>
+				</div>
+				
+				<div class="space-x-2">
+                	<button class="bg-black transition duration-200 text-yellow-400 hover:scale-110 font-bold py-2 px-4 rounded-2xl cursor-pointer" id="signupButton">회원가입</button>
+					<button class="bg-black transition duration-200 text-yellow-400 hover:scale-110 font-bold py-2 px-4 rounded-2xl cursor-pointer" id="loginButton">로그인</button>
+            	</div>
+			</div>
+		</div>
+                        
+        <!-- 로그인 모달 -->
+        <div class="fixed inset-0 flex items-center justify-center bg-black/75 z-50 hidden" id="loginModal">
+            <div class="bg-yellow-400 rounded-3xl shadow-xl w-96">
+                <section class="p-3">
+                    <form id="loginForm">
+                        <div class="mb-4">
+                            <input class="input bg-white w-full border rounded-2xl py-2 pl-3 pr-3" type="text" id="username" placeholder="아이디">
+                            <p id="help-inputUsername" class="text-red-500 text-sm mt-1 hidden">아이디를 입력해주세요.</p>
+                        </div>
+                        <div class="mb-4">
+                            <input class="input bg-white w-full border rounded-2xl py-2 pl-3 pr-3" type="password" id="password" placeholder="비밀번호">
+                            <p id="help-inputPassword" class="text-red-500 text-sm mt-1 hidden">비밀번호를 입력해주세요.</p>
+                        </div>
+                    </form>
+                </section>
+                <footer class="flex justify-between p-3">
+                    <button class="bg-gray-300 hover:bg-red-400 text-gray-700 py-2 px-17 rounded-2xl cursor-pointer cancel" type="button" id="closeModalFooter">취소</button>
+					<button class="bg-black text-black transition duration-200 hover:scale-110 text-yellow-400 py-2 px-17 rounded-2xl cursor-pointer" type="submit" id="submitLogin">로그인</button>
+                </footer>
+            </div>
+        </div>
+		{% endif %}
+    </body>
+	
+    <script src="{{ url_for('static', filename='index.js') }}"></script>
+    {% if is_logged_in %}
+    <script>
+        $(document).ready(function () {
+            getDates();
+            chartTest();
+        });
+
+        const today = new Date(); // 오늘 날짜
+        const dates = [];
+
+        // 오늘 날짜부터 6일 전의 날짜까지를 구하는 함수
+        function getDates() {
+            for (let i = 0; i <= 6; i++) {
+                const pastDate = new Date(today);
+                pastDate.setDate(today.getDate() - i); // 오늘 날짜에서 i일을 뺀 날짜
+                const month = String(pastDate.getMonth() + 1).padStart(2, '0');
+                const day = String(pastDate.getDate()).padStart(2, '0');
+                dates.push(`${month}-${day}`); // MM-DD 형식
+            }
+        }
+
+        // 그래프를 그리는 함수
+        function chartTest() {
+            const ctx = $('#myChart')[0].getContext('2d');
+            const myChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ["", "", "", "", "", "", ""],
+                    datasets: [{
+                        label: '행운 점수',
+                        data: {{ past_scores }},
+                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+					repositive: true,
+					maintainAspectRatio: false,
+                    
+                }
+            });
+        }
+    </script>
+    {% endif %}
+</html>

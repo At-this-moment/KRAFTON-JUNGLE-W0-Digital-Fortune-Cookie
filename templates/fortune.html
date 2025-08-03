@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Diphylleia&display=swap">
+        <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" />
+		<script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+        <title>오늘의 쿠키 뽑기 - {{ service_name }}</title>
+    </head>
+    <body class="bg-yellow-400">
+		<div>
+            <div class="flex items-center justify-center h-screen">
+				<img src="{{ url_for('static', filename='plate.svg') }}" class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 size-[100%]">
+                <img src="{{ url_for('static', filename='cookie1.png') }}" class="drop-shadow-[0_12px_12px_rgba(0,0,0,0.75)] transition duration-200 hover:drop-shadow-[0_36px_36px_rgba(0,0,0,0.50)] hover:scale-125 cursor-pointer" id="open-cookie" oncontextmenu="return false" onselectstart="return false" ondragstart="return false">
+                <img src="{{ url_for('static', filename='cookie2.png') }}" class="hidden drop-shadow-xl" id="dead-cookie" ondragstart="return false">
+                <img src="{{ url_for('static', filename='paper1.png') }}" class="hidden drop-shadow-xl absolute top-48/100 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 drop-shadow-xl" id="paper" ondragstart="return false">
+            
+                <div id="text1" class="hidden font-bold diphylleia absolute left-1/4 transform -translate-x-1/2 -translate-y-1/2 z-20 text-black text-lg xl:text-2xl"></div>
+                <div id="text2" class="hidden font-bold diphylleia absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 text-black text-lg xl:text-2xl"></div>
+                <div id="text3" class="hidden font-bold diphylleia absolute left-3/4 transform -translate-x-1/2 -translate-y-1/2 z-20 text-black text-lg xl:text-2xl max-w-screen"></div>
+
+                <button id="confirm-button" class="hidden absolute bottom-1/8 right-1/8 bg-black scale-120 transition duration-200 hover:scale-130 text-yellow-400 px-4 py-2 rounded-4xl cursor-pointer shadow-[0_6px_6px_rgba(0,0,0,0.25)] ">돌아가기</button>
+            </div>
+        </div>
+    </body>
+    <script src="{{ url_for('static', filename='fortune.js') }}"></script>
+</html>
