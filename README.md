@@ -1,11 +1,14 @@
-# 🥠 Digital Fortune Cookie  
-**“행운을 기다리지 마세요. 와서 가져가세요.”**  
+<img width="1280" height="720" alt="image" src="https://github.com/user-attachments/assets/d8daea4f-edbb-47fe-82a2-1fc031392fdd" />
+
+# 🥠 Digital Fortune Cookie
+**“행운을 기다리지 마세요. 와서 가져가세요.”**
 
 ## 프로젝트 소개
 
 > 운세를 랜덤으로 제공하는 **디지털 포춘 쿠키** 웹 애플리케이션입니다.<br />
 > 사용자는 하루 한 번 포춘 쿠키를 열 수 있고,<br />
 > 지난 7일 간의 행운 점수를 확인하거나 운세 랭킹을 확인할 수 있습니다.
+- 프로젝트 기간 : 2025-03-10 ~ 2025-03-13
 - 배포 URL : http://cookie4u.store/
 
 ---
@@ -41,3 +44,8 @@
 ---
 
 ## 📷 스크린샷
+| 로그인 페이지 | 회원가입 페이지 | 메인 페이지 |
+|:---:|:---:|:---:|
+| <img width="1280" height="673" alt="image" src="https://github.com/user-attachments/assets/a04660d0-af86-491d-a94f-24ddd7500816" /> | <img width="1280" height="673" alt="image" src="https://github.com/user-attachments/assets/3d9e6913-14e9-4ce3-bd30-1c702ade1f77" /> | <img width="1280" height="673" alt="image" src="https://github.com/user-attachments/assets/815e13fb-0717-45e6-956f-a0c901ba5c6a" /> |
+| **포춘쿠키 열기** | **포춘쿠키 열기 2** | **메인 페이지 2** |
+| <img width="1280" height="673" alt="image" src="https://github.com/user-attachments/assets/700709c6-320a-447d-b817-86f53e29cf7e" /> | <img width="1280" height="673" alt="image" src="https://github.com/user-attachments/assets/cddc8335-dee8-45cf-9eeb-6d5dab546a76" /> | <img width="1280" height="673" alt="image" src="https://github.com/user-attachments/assets/061e8eec-23ab-451f-9cbf-cd3d742e203e" /> |
