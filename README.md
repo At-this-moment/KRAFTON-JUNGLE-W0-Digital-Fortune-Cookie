@@ -1,4 +1,6 @@
-<img width="1280" height="720" alt="image" src="https://github.com/user-attachments/assets/d8daea4f-edbb-47fe-82a2-1fc031392fdd" />
+
+<img width="6000" height="3375" alt="썸네일_프로젝트" src="https://github.com/user-attachments/assets/a368cf53-8eb3-4307-bbc8-ee6c38110096" />
+
 
 # 🥠 Digital Fortune Cookie
 **“행운을 기다리지 마세요. 와서 가져가세요.”**
