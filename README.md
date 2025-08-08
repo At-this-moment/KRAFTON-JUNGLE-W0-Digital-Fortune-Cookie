@@ -24,6 +24,15 @@
 
 ---
 
+## 스크린샷
+| 로그인 페이지 | 회원가입 페이지 | 메인 페이지 |
+|:---:|:---:|:---:|
+| <img width="1280" height="673" alt="image" src="https://github.com/user-attachments/assets/a04660d0-af86-491d-a94f-24ddd7500816" /> | <img width="1280" height="673" alt="image" src="https://github.com/user-attachments/assets/3d9e6913-14e9-4ce3-bd30-1c702ade1f77" /> | <img width="1280" height="673" alt="image" src="https://github.com/user-attachments/assets/815e13fb-0717-45e6-956f-a0c901ba5c6a" /> |
+| **포춘쿠키 열기** | **포춘쿠키 열기 2** | **메인 페이지 2** |
+| <img width="1280" height="673" alt="image" src="https://github.com/user-attachments/assets/700709c6-320a-447d-b817-86f53e29cf7e" /> | <img width="1280" height="673" alt="image" src="https://github.com/user-attachments/assets/cddc8335-dee8-45cf-9eeb-6d5dab546a76" /> | <img width="1280" height="673" alt="image" src="https://github.com/user-attachments/assets/061e8eec-23ab-451f-9cbf-cd3d742e203e" /> |
+
+---
+
 ## 기술 스택  
 
 ### 프론트엔드  
@@ -43,11 +52,4 @@
 ![FileZilla](https://img.shields.io/badge/FileZilla-BF0000?style=flat&logo=filezilla&logoColor=white)
 ![Studio 3T](https://img.shields.io/badge/Studio%203T-47A248?style=flat&logoColor=white)
 
----
 
-## 스크린샷
-| 로그인 페이지 | 회원가입 페이지 | 메인 페이지 |
-|:---:|:---:|:---:|
-| <img width="1280" height="673" alt="image" src="https://github.com/user-attachments/assets/a04660d0-af86-491d-a94f-24ddd7500816" /> | <img width="1280" height="673" alt="image" src="https://github.com/user-attachments/assets/3d9e6913-14e9-4ce3-bd30-1c702ade1f77" /> | <img width="1280" height="673" alt="image" src="https://github.com/user-attachments/assets/815e13fb-0717-45e6-956f-a0c901ba5c6a" /> |
-| **포춘쿠키 열기** | **포춘쿠키 열기 2** | **메인 페이지 2** |
-| <img width="1280" height="673" alt="image" src="https://github.com/user-attachments/assets/700709c6-320a-447d-b817-86f53e29cf7e" /> | <img width="1280" height="673" alt="image" src="https://github.com/user-attachments/assets/cddc8335-dee8-45cf-9eeb-6d5dab546a76" /> | <img width="1280" height="673" alt="image" src="https://github.com/user-attachments/assets/061e8eec-23ab-451f-9cbf-cd3d742e203e" /> |
