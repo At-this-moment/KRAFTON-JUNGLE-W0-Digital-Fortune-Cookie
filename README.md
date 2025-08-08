@@ -22,7 +22,7 @@
 
 ---
 
-## 🛠 기술 스택  
+## 기술 스택  
 
 ### 프론트엔드  
 ![HTML](https://img.shields.io/badge/HTML-E34F26?style=flat&logo=html5&logoColor=white)
